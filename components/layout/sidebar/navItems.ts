@@ -18,12 +18,12 @@ export const mainNav:ItemsType = [
     },
     { 
         title: 'Customers', 
-        href: '/dashboard/customers', 
+        href: '/customers', 
         icon: Users
     },
     { 
         title: 'Orders', 
-        href: '/dashboard/orders',
+        href: '/orders',
         icon: Package
     },
 ]
