@@ -1,4 +1,4 @@
-// nav renderer
+'use client'
 
 const sidebarNav = () => {
   return (
