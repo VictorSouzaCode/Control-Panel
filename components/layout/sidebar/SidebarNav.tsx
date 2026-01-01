@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/sidebar"
 import Link from "next/link"
 import type { ItemsType } from "@/lib/types/itemsType"
+import { usePathname } from "next/navigation"
 
 type SidebarNavProps = {
   label: string,
@@ -19,6 +20,9 @@ const SidebarNav = ({
   label,
   items
 }: SidebarNavProps) => {
+
+  const pathname = usePathname()
+
   return (
     <SidebarGroup>
       <SidebarGroupLabel>{label}</SidebarGroupLabel>
@@ -27,7 +31,10 @@ const SidebarNav = ({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
+              <SidebarMenuButton 
+              asChild
+              isActive={pathname === item.href}
+              >
                 <Link href={item.href}>
                 <item.icon/>
                 <span>{item.title}</span>
