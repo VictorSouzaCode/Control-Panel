@@ -4,7 +4,8 @@ import {
     Home,
     Users,
     Settings,
-    Package
+    Package,
+    LogOut
 } from "lucide-react";
 
 import { ItemsType } from "@/lib/types/itemsType";
@@ -26,8 +27,29 @@ export const mainNav:ItemsType = [
         href: '/orders',
         icon: Package
     },
+    { 
+        title: 'Settings', 
+        href: '/settings', 
+        icon: Settings 
+    },
+    {
+        title: 'LogOut',
+        href: '/login',
+        icon: LogOut
+    }
 ]
 
-export const secondaryNav:ItemsType = [
-    { title: 'Settings', href: '/dashboard/settings', icon: Settings }
+
+export const footerNav:ItemsType = [
+    { 
+        title: 'Settings', 
+        href: '/settings', 
+        icon: Settings 
+    },
+    {
+        title: 'LogOut',
+        href: '/login',
+        icon: LogOut
+    }
+
 ]

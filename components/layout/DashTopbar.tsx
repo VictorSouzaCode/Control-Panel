@@ -1,6 +1,7 @@
 'use client'
 import { User, Settings  } from "lucide-react"
 import Link from "next/link"
+import { SidebarTrigger } from "../ui/sidebar"
 
 const DashTopbar = () => {
 
@@ -9,10 +10,8 @@ const DashTopbar = () => {
     }
 
   return (
-    <div className="border flex justify-between p-4 items-center h-16">
-        <div className="border rounded-2xl bg-gray-600 text-white font-bold p-1">
-            <h1>CP</h1>
-        </div>
+    <header className="border flex justify-center p-4 items-center h-16">
+        <SidebarTrigger className="md:hidden"/>
         <form 
         onSubmit={(e) => {
             handleSubmit(e)
@@ -21,17 +20,7 @@ const DashTopbar = () => {
         >
             <input type="text" placeholder="search" className="indent-2 outline-none" />
         </form>
-
-        <div className="border border-blue-500 flex gap-4">
-            <Link href='/user'>
-            <User/>
-            </Link>
-
-            <Link href='/settings'>
-            <Settings/>
-            </Link>
-        </div>
-    </div>
+    </header>
   )
 }
 

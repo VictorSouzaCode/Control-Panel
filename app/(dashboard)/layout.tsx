@@ -1,4 +1,3 @@
-import DashSidebar from "@/components/layout/DashSidebar"
 import DashTopbar from "@/components/layout/DashTopbar"
 import AppSidebar from "@/components/layout/sidebar/AppSidebar"
 import React from "react"
@@ -11,17 +10,16 @@ type DashboardLayout = {
 
 const DashboardLayout = ({children}:DashboardLayout) => {
   return (
-    <div className="flex min-h-screen">
-      <SidebarProvider>
-        {/* <DashSidebar /> */}
+    <SidebarProvider>
+    <div className="flex w-full min-h-screen">
         <AppSidebar/>
 
         <div className="border border-amber-500 flex flex-col flex-1">
           <DashTopbar />
           <main className="flex-1">{children}</main>
         </div>
-      </SidebarProvider>
     </div>
+    </SidebarProvider>
   )
 }
 

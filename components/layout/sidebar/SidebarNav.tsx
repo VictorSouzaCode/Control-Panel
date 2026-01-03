@@ -6,15 +6,18 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  SidebarTrigger
 } from "@/components/ui/sidebar"
 import Link from "next/link"
 import type { ItemsType } from "@/lib/types/itemsType"
 import { usePathname } from "next/navigation"
 
 type SidebarNavProps = {
-  label: string,
+  label?: string,
   items: ItemsType
 }
+
+// Your SidebarNav should only render navigation.
 
 const SidebarNav = ({
   label,
@@ -25,7 +28,8 @@ const SidebarNav = ({
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>{label}</SidebarGroupLabel>
+      {/* <SidebarGroupLabel>{label}</SidebarGroupLabel> */}
+      <SidebarTrigger className="cursor-pointer"/>
 
       <SidebarGroupContent>
         <SidebarMenu>
