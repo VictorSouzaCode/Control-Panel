@@ -1,15 +1,18 @@
 'use client'
-import { Sidebar, SidebarContent, SidebarTrigger } from "@/components/ui/sidebar"
+import { Sidebar, SidebarContent, SidebarTrigger, SidebarHeader } from "@/components/ui/sidebar"
 import SidebarNav from "./SidebarNav"
 import { mainNav } from "./navItems"
+import SidebarLogo from "./sidebarLogo"
 
-//
-// align icons and names properly
-// add a footer with user and settings
 
 const AppSidebar = () => {
   return (
     <Sidebar collapsible="icon">
+      
+      <SidebarHeader className="border-b h-16 flex justify-center">
+        <SidebarLogo/>
+      </SidebarHeader>
+
       <SidebarContent>
         <SidebarNav items={mainNav}/>
       </SidebarContent>

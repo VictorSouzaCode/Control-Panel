@@ -17,8 +17,6 @@ type SidebarNavProps = {
   items: ItemsType
 }
 
-// Your SidebarNav should only render navigation.
-
 const SidebarNav = ({
   label,
   items
@@ -29,7 +27,6 @@ const SidebarNav = ({
   return (
     <SidebarGroup>
       {/* <SidebarGroupLabel>{label}</SidebarGroupLabel> */}
-      <SidebarTrigger className="cursor-pointer"/>
 
       <SidebarGroupContent>
         <SidebarMenu>

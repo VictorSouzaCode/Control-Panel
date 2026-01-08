@@ -1,8 +1,8 @@
 import DashTopbar from "@/components/layout/DashTopbar"
 import AppSidebar from "@/components/layout/sidebar/AppSidebar"
 import React from "react"
-import { SidebarProvider } from "@/components/ui/sidebar"
-
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
+import DashSidebar from "@/components/layout/DashSidebar"
 
 type DashboardLayout = {
   children: React.ReactNode
@@ -12,12 +12,14 @@ const DashboardLayout = ({children}:DashboardLayout) => {
   return (
     <SidebarProvider>
     <div className="flex w-full min-h-screen">
-        <AppSidebar/>
+      <AppSidebar/>
 
-        <div className="border border-amber-500 flex flex-col flex-1">
+      <SidebarInset className="flex flex-1 flex-col">
           <DashTopbar />
+          
           <main className="flex-1">{children}</main>
-        </div>
+
+        </SidebarInset>
     </div>
     </SidebarProvider>
   )
