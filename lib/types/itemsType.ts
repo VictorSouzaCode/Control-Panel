@@ -1,5 +1,6 @@
 export type ItemsType = {
     title: string,
     href: string,
-    icon: React.ElementType
+    icon: React.ElementType,
+    function?: "logout"
 }[]

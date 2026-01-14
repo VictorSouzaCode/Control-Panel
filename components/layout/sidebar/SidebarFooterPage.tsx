@@ -2,6 +2,8 @@
 import { SidebarFooter, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar"
 import Link from 'next/link'
 import type { ItemsType } from "@/lib/types/itemsType"
+import { Button } from "@/components/ui/button"
+import { logout } from "@/lib/constants/Logout"
 
 // maybe a component to use.
 
@@ -20,10 +22,10 @@ const SidebarFooterPage = ({
           <SidebarMenuItem key={item.title}>
           <SidebarMenuButton asChild>
 
-            <Link href={item.href}>
-            <item.icon/>
-            <span>{item.title}</span>
-            </Link>
+              <Link href={item.href}>
+                  <item.icon />
+                  <span>{item.title}</span>
+              </Link>
 
           </SidebarMenuButton>
         </SidebarMenuItem>

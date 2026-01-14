@@ -3,50 +3,73 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { login } from "@/lib/api/auth"
+import { useAuthStore } from "@/store/useAuthStore"
 
 // Next step is to build the authentication logic
 
-const LoginPage = () => {
-  const [ email, setEmail ] = useState('')
-  const [ password, setPassword] = useState('')
+// POST https://dummyjson.com/auth/login
 
-  const handleLogin = () => {
+// all right i did all the structure, but it is not working or making the login, i will see how i am going  to fix that later
 
-    if(email === "" && password === "") {
-      alert("no email or password")
+// see the logout button later, to make it work
 
-    } else if (email === "") {
-      alert("no email")
 
-    } else if (password === "") {
-      alert('no password')
+export default function LoginPage() {
+  const router = useRouter();
+  const setAuth = useAuthStore((s) => s.login);
+
+  const [username, setUsername] = useState("emilys");
+  const [password, setPassword] = useState("emilyspass");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      const user = await login(username, password);
+
+      // Zustand
+      setAuth(user);
+
+      // Cookie for middleware
+      document.cookie = `auth_token=${user.token}; path=/`;
+
+      router.push("/dashboard");
+    } catch {
+      setError("Invalid username or password");
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
-    <div className="flex flex-col min-h-screen items-center justify-center gap-8">
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-sm mx-auto min-w-full min-h-screen flex items-center justify-center">
+      <div className="min-h-80 flex flex-col justify-center items-center min-w-72 gap-2 p-2">
 
-        <h1 className="text-6xl font-medium">Login</h1>
+        <h1 className="text-2xl font-semibold">Login</h1>
 
-        <div className="flex flex-col gap-4 w-full max-w-87.5">
-        <Input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
-        <Input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-        </div>
+        <Input 
+        type="text" 
+        placeholder="Username" 
+        value={username} 
+        onChange={(e) => setUsername(e.target.value)}/>
+        <Input 
+        type="password" 
+        placeholder="Password" 
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}/>
 
-        <div className="flex gap-4 w-full max-w-87.5 justify-center">
+        {error && <p className="text-red-500">{error}</p>}
 
-          <Link href="/dashboard">
-          <Button size="lg" className="cursor-pointer">
-            Enter
-          </Button>
-          </Link>
-
-          <Button size="lg" className="cursor-pointer" onClick={handleLogin}>
-            Login
-          </Button>
-        </div>
-    </div>
-  )
+        <Button className="cursor-pointer">
+          {loading ? "Logging in..." : "Login"}
+        </Button>
+      </div>
+    </form>
+  );
 }
-
-export default LoginPage

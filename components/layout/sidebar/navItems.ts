@@ -34,10 +34,11 @@ export const mainNav:ItemsType = [
     },
     {
         title: 'LogOut',
-        href: '/login',
-        icon: LogOut
+        href: '#',
+        icon: LogOut,
+        function: "logout",
     }
-]
+] as const
 
 
 export const footerNav:ItemsType = [
@@ -49,7 +50,7 @@ export const footerNav:ItemsType = [
     {
         title: 'LogOut',
         href: '/login',
-        icon: LogOut
+        icon: LogOut,
     }
 
 ]
