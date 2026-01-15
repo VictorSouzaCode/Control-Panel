@@ -1,6 +1,8 @@
 'use client'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 
+// I need to delete the chart branch
+
 const chartData = [
     { day: "Mon", orders: 12 },
     { day: "Tue", orders: 18 },
