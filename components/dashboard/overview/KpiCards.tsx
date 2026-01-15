@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardContent, CardTitle } from "../ui/card"
+import { Card, CardHeader, CardContent, CardTitle } from "../../ui/card"
 
 type CardsProps = {
     title: string,
