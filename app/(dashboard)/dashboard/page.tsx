@@ -1,4 +1,6 @@
+'use client'
 import KpiCards from "@/components/dashboard/KpiCards"
+import OrdersChart from "@/components/dashboard/OrdersChart"
 
 const OverviewPage = () => {
   return (
@@ -10,9 +12,7 @@ const OverviewPage = () => {
         <KpiCards title="Total Customers" value="ronaldo"/>
       </div>
 
-      <div>
-        <h1>Another shit</h1>
-      </div>
+      <OrdersChart/>
     </div>
   )
 }
