@@ -1,19 +1,4 @@
-// import type { Order } from "../types/Orders2";
-
-export type Order = {
-    id: number,
-    userId: number,
-    total: number,
-    totalProducts: number,
-    totalQuantity: number,
-    products: {
-        id: number,
-        title: string,
-        price: number,
-        quantity: number,
-        total: number,
-    }[],
-};
+import type { Order } from "../types/Orders";
 
 type  OrdersResponse = {
     carts: Order[],
