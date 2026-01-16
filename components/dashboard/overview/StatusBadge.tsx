@@ -5,10 +5,14 @@ type BadgeProps = {
 }
 
 const StatusBadge = ({status}:BadgeProps) => {
-    const textColor = status === 'completed' ? "bg-green-500" : "bg-red-500"
+    const statusColor = {
+        Pending: "bg-yellow-100 text-yellow-800",
+        Processing: "bg-blue-100 text-blue-800",
+        Completed: "bg-green-100 text-green-800"
+    }
 
   return (
-    <Badge className={textColor}>{status}</Badge>
+    <Badge className={statusColor[status as keyof typeof statusColor]}>{status}</Badge>
   )
 }
 

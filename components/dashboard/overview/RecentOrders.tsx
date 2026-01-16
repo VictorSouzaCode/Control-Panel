@@ -1,5 +1,6 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import type { Order } from "@/lib/types/Orders"
+import { getOrderStatus } from "@/lib/constants/orderStatus"
 import StatusBadge from "./StatusBadge"
 
 const RecentOrders = ({orders}: {orders: Order[]}) => {
@@ -25,7 +26,7 @@ const RecentOrders = ({orders}: {orders: Order[]}) => {
                         <TableCell>{order.totalQuantity}</TableCell>
                         <TableCell>${order.discountedTotal.toFixed(2)}</TableCell>
                         <TableCell>
-                            pending
+                            <StatusBadge status={getOrderStatus(order)}></StatusBadge>
                         </TableCell>
                     </TableRow>
                 ))}
