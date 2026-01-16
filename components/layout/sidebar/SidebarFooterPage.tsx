@@ -2,8 +2,6 @@
 import { SidebarFooter, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar"
 import Link from 'next/link'
 import type { ItemsType } from "@/lib/types/itemsType"
-import { Button } from "@/components/ui/button"
-import { logout } from "@/lib/constants/Logout"
 
 // maybe a component to use.
 

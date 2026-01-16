@@ -1,5 +1,6 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import type { Order } from "@/lib/types/Orders"
+import StatusBadge from "./StatusBadge"
 
 const RecentOrders = ({orders}: {orders: Order[]}) => {
   return (
@@ -9,17 +10,23 @@ const RecentOrders = ({orders}: {orders: Order[]}) => {
                 <TableRow>
                     <TableHead>Order</TableHead>
                     <TableHead>Customer</TableHead>
+                    <TableHead>Items</TableHead>
+                    <TableHead>Quantity</TableHead>
+                    <TableHead>Total</TableHead>
                     <TableHead>Status</TableHead>
-                    <TableHead>Date</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
                 {orders.slice(0, 5).map((order) => (
                     <TableRow key={order.id}>
                         <TableCell>#{order.id}</TableCell>
-                        <TableCell>{order.customerName}</TableCell>
-                        <TableCell>{order.status}</TableCell>
-                        <TableCell>{order.date}</TableCell>
+                        <TableCell>{order.userId}</TableCell>
+                        <TableCell>{order.totalProducts}</TableCell>
+                        <TableCell>{order.totalQuantity}</TableCell>
+                        <TableCell>${order.discountedTotal.toFixed(2)}</TableCell>
+                        <TableCell>
+                            pending
+                        </TableCell>
                     </TableRow>
                 ))}
             </TableBody>
