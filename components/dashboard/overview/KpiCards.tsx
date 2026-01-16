@@ -8,14 +8,14 @@ type CardsProps = {
 const KpiCards = ({ title, value }: CardsProps) => {
 
     return (
-        <Card>
+        <Card className="flex-1 flex justify-center">
             <CardHeader>
-                <CardTitle>
+                <CardTitle className="text-center">
                     {title}
                 </CardTitle>
             </CardHeader>
             <CardContent>
-                <p>{value}</p>
+                <p className="text-center">{value}</p>
             </CardContent>
         </Card>
     )
