@@ -13,8 +13,18 @@ type GetCustomersParams = {
     q?: string,
 }
 
-export async function getCustomers ():Promise<CustomerType[]>{
-    const res = await fetch("https://dummyjson.com/users", {
+export async function getCustomers ({
+    page = 1,
+    limit = 10,
+    q = "",
+}:GetCustomersParams = {}):Promise<CustomerResponse>{
+    const skip = (page - 1) * limit;
+
+    const url = q
+    ? `https://dummyjson.com/users/search?q=${q}&limit=${limit}&skip=${skip}`
+    : `https://dummyjson.com/users?limit=${limit}&skip=${skip}`;
+
+    const res = await fetch(url, {
         next: { revalidate: 60 }
     });
 
@@ -22,6 +32,5 @@ export async function getCustomers ():Promise<CustomerType[]>{
         throw new Error("Failed to fetch orders")
     }
 
-    const data: CustomerResponse = await res.json();
-    return data.users
+    return res.json();
 }

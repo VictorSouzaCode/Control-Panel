@@ -6,7 +6,7 @@ import { getCustomers } from "@/lib/api/customers"
 
 const OverviewPage = async () => {
   const orders = await getOrders();
-  const customers = await getCustomers();
+  const { users: customers } = await getCustomers({ limit: 5 });
 
   const activeCustomers = customers.length - 17
   const totalOrders = orders.length - 19
