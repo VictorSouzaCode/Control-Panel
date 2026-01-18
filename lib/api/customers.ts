@@ -7,6 +7,12 @@ type CustomerResponse = {
     limit: number
 }
 
+type GetCustomersParams = {
+    page?: number,
+    limit?: number,
+    q?: string,
+}
+
 export async function getCustomers ():Promise<CustomerType[]>{
     const res = await fetch("https://dummyjson.com/users", {
         next: { revalidate: 60 }
