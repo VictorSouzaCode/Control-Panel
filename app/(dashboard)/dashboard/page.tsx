@@ -4,9 +4,6 @@ import RecentOrders from "@/components/dashboard/overview/RecentOrders"
 import { getOrders } from "@/lib/api/orders"
 import { getCustomers } from "@/lib/api/customers"
 
-// Connect dummyJSON data to the chart
-// next work on the other pages
-
 const OverviewPage = async () => {
   const orders = await getOrders();
   const customers = await getCustomers();

@@ -9,14 +9,6 @@ type ChartProps = {
     orders: Order[]
 }
 
-const chartData = [
-    { day: "Mon", orders: 12 },
-    { day: "Tue", orders: 18 },
-    { day: "Wed", orders: 9 },
-    { day: "Thu", orders: 24 },
-    { day: "Fri", orders: 30 },
-]
-
 const OrdersChart = ({orders}:ChartProps) => {
     const data = buildChartData(orders)
 
