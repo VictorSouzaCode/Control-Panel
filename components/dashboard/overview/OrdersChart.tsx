@@ -1,7 +1,13 @@
 'use client'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
+import type { Order } from "@/lib/types/Orders"
+import { buildChartData } from "@/lib/ultils/buildChartData"
 
 // I need to delete the chart branch
+
+type ChartProps = {
+    orders: Order[]
+}
 
 const chartData = [
     { day: "Mon", orders: 12 },
@@ -11,15 +17,17 @@ const chartData = [
     { day: "Fri", orders: 30 },
 ]
 
-const OrdersChart = () => {
+const OrdersChart = ({orders}:ChartProps) => {
+    const data = buildChartData(orders)
+
     return (
         <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartData}>
+                <LineChart data={data}>
                     <XAxis dataKey="day" />
                     <YAxis />
                     <Tooltip />
-                    <Line type="monotone" dataKey="orders" />
+                    <Line type="monotone" dataKey="value" />
                 </LineChart>
             </ResponsiveContainer>
         </div>

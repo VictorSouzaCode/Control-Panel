@@ -4,6 +4,8 @@ import RecentOrders from "@/components/dashboard/overview/RecentOrders"
 import { getOrders } from "@/lib/api/orders"
 import { getCustomers } from "@/lib/api/customers"
 
+// Connect dummyJSON data to the chart
+// next work on the other pages
 
 const OverviewPage = async () => {
   const orders = await getOrders();
@@ -22,7 +24,7 @@ const OverviewPage = async () => {
         <KpiCards title="Completed Orders" value={completedOrders}/>
       </div>
 
-      <OrdersChart/>
+      <OrdersChart orders={orders}/>
       <h2 className="text-lg font-semibold">Recent Activity</h2>
       <RecentOrders orders={orders}/>
     </div>
