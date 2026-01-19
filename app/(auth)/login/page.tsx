@@ -7,14 +7,6 @@ import { useRouter } from "next/navigation"
 import { login } from "@/lib/api/auth"
 import { useAuthStore } from "@/store/useAuthStore"
 
-// Next step is to build the authentication logic
-
-// POST https://dummyjson.com/auth/login
-
-// all right i did all the structure, but it is not working or making the login, i will see how i am going  to fix that later
-
-// see the logout button later, to make it work
-
 
 export default function LoginPage() {
   const router = useRouter();
