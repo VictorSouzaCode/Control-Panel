@@ -9,28 +9,36 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
+import { CustomerSearch } from "@/components/dashboard/CustomerSearch"
 
 type CustomerPageProps = {
-  searchParams: Promise<{ page?: string}>
+  searchParams: Promise<{ page?: string, query?: string}>
 }
 
 const PAGE_SIZE = 10
 
 const CustomersPage = async ({ searchParams }: CustomerPageProps) => {
-  const { page } = await searchParams;
+  const { page, query } = await searchParams;
   const currentPage = Number(page) || 1;
+  const search = query?.toLowerCase() ?? ""
 
-  const { users, total } = await getCustomers({
+  const { users } = await getCustomers({
     page: currentPage,
     limit: PAGE_SIZE
   })
+
+  const filtered = search ? users.filter((c) => `${c.firstName} ${c.lastName}`.toLowerCase().includes(search) || c.email.toLowerCase().includes(search)) : users
 
   const totalPages = 3
 
 
   return (
     <div className="p-4 space-y-4">
+      <div className="flex items-center justify-between">
         <h1 className="text-xl font-semibold">Customers</h1>
+        <CustomerSearch/>
+      </div>
+        
 
         <div className="rounded-md border">
           <Table>
@@ -45,7 +53,7 @@ const CustomersPage = async ({ searchParams }: CustomerPageProps) => {
             </TableHeader>
 
             <TableBody>
-              {users.map((u) => (
+              {filtered.map((u) => (
                 <TableRow key={u.id}>
                   <TableCell>#{u.id}</TableCell>
                   <TableCell>
