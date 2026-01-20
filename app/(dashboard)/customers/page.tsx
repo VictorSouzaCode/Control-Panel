@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { CustomerSearch } from "@/components/dashboard/CustomerSearch"
+import { getCustomerStatus } from "@/lib/constants/customersStatus"
+import StatusBadge from "@/components/dashboard/overview/StatusBadge"
 
 type CustomerPageProps = {
   searchParams: Promise<{ page?: string, query?: string}>
@@ -67,6 +69,9 @@ const CustomersPage = async ({ searchParams }: CustomerPageProps) => {
                   <TableCell>{u.email}</TableCell>
                   <TableCell>{u.age}</TableCell>
                   <TableCell>{u.address.country}</TableCell>
+                  <TableCell>
+                    <StatusBadge status={getCustomerStatus(u.age)} />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
