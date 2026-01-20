@@ -8,9 +8,9 @@ type Props = {
 
 const CustomerInfo = async ({ params }: Props) => {
   const { id } = await params
-  const customers = await getCustomers()
+  const { users } = await getCustomers()
   
-  const customer = customers.find(
+  const customer = users.find(
     (c) => c.id === Number(id)
   )
 

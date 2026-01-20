@@ -6,11 +6,11 @@ import { getCustomers } from "@/lib/api/customers"
 
 const OverviewPage = async () => {
   const orders = await getOrders();
-  const customers = await getCustomers();
+  const { users: customers } = await getCustomers();
 
-  const activeCustomers = customers.length - 17
-  const totalOrders = orders.length - 19
-  const completedOrders = 2
+  const activeCustomers = customers.length - 17;
+  const totalOrders = orders.length - 19;
+  const completedOrders = 2;
 
   return (
     <div className="flex flex-col flex-1 min-h-full border">

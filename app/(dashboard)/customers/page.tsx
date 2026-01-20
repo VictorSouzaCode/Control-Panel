@@ -8,9 +8,25 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { Button } from "@/components/ui/button"
 
-const CustomersPage = async () => {
-  const customers = await getCustomers()
+type CustomerPageProps = {
+  searchParams: Promise<{ page?: string}>
+}
+
+const PAGE_SIZE = 10
+
+const CustomersPage = async ({ searchParams }: CustomerPageProps) => {
+  const { page } = await searchParams;
+  const currentPage = Number(page) || 1;
+
+  const { users, total } = await getCustomers({
+    page: currentPage,
+    limit: PAGE_SIZE
+  })
+
+  const totalPages = 3
+
 
   return (
     <div className="p-4 space-y-4">
@@ -29,27 +45,62 @@ const CustomersPage = async () => {
             </TableHeader>
 
             <TableBody>
-              {customers.map((custom) => (
-                <TableRow key={custom.id}>
-                  <TableCell>#{custom.id}</TableCell>
+              {users.map((u) => (
+                <TableRow key={u.id}>
+                  <TableCell>#{u.id}</TableCell>
                   <TableCell>
                     <Link
-                    href={`/customers/${custom.id}`}
+                    href={`/customers/${u.id}`}
                     className="hover:underline" 
                     >
-                    {custom.firstName} {custom.lastName}
+                    {u.firstName} {u.lastName}
                     </Link>
                   </TableCell>
-                  <TableCell>{custom.email}</TableCell>
-                  <TableCell>{custom.age}</TableCell>
-                  <TableCell>{custom.address.country}</TableCell>
+                  <TableCell>{u.email}</TableCell>
+                  <TableCell>{u.age}</TableCell>
+                  <TableCell>{u.address.country}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
+        </div>
+
+        <div className="text-center">
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
+          {/* Later: improve buttons initial and final positions */}
+          <div className="flex justify-between">
+            <Link 
+              href={`/customers?page=${currentPage - 1}`}
+              >
+                <Button size="sm" className="cursor-pointer">Previous</Button>
+              </Link>
+              <Link 
+              href={`/customers?page=${currentPage + 1}`}>
+                <Button size="sm" className="cursor-pointer">Next</Button>
+              </Link>
+          </div>
         </div>
     </div>
   )
 }
 
 export default CustomersPage
+
+// old code for buttons position
+/* 
+              {currentPage > 1 && (
+              <Link 
+              href={`/customers?page=${currentPage - 1}`}
+              >
+                <Button size="sm" className="cursor-pointer">Previous</Button>
+              </Link>
+            )}
+            {currentPage < totalPages && (
+              <Link 
+              href={`/customers?page=${currentPage + 1}`}>
+                <Button size="sm" className="cursor-pointer">Next</Button>
+              </Link>
+            )}
+*/

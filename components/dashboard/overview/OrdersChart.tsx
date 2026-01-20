@@ -3,8 +3,6 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import type { Order } from "@/lib/types/Orders"
 import { buildChartData } from "@/lib/ultils/buildChartData"
 
-// I need to delete the chart branch
-
 type ChartProps = {
     orders: Order[]
 }

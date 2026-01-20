@@ -3,6 +3,7 @@ import type { Order } from "@/lib/types/Orders"
 import { getOrderStatus } from "@/lib/constants/orderStatus"
 import StatusBadge from "./StatusBadge"
 
+
 const RecentOrders = ({orders}: {orders: Order[]}) => {
   return (
     <div className="rounded-md border">
