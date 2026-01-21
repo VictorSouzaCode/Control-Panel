@@ -2,7 +2,6 @@ import DashTopbar from "@/components/layout/DashTopbar"
 import AppSidebar from "@/components/layout/sidebar/AppSidebar"
 import React from "react"
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
-import DashSidebar from "@/components/layout/DashSidebar"
 
 type DashboardLayout = {
   children: React.ReactNode
