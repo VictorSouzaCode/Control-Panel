@@ -2,6 +2,7 @@
 import { SidebarTrigger } from "../ui/sidebar"
 import { usePathname } from "next/navigation"
 import { User } from "lucide-react"
+import { useAuthStore } from "@/store/useAuthStore"
 
 function getTitle(pathname: string)  {
 
@@ -19,6 +20,7 @@ function getTitle(pathname: string)  {
 const DashTopbar = () => {
   const pathname = usePathname()
   const title = getTitle(pathname)
+  const user = useAuthStore((s) => s.user)
 
   return (
     <header className="flex h-16 border-b items-center">
@@ -32,8 +34,9 @@ const DashTopbar = () => {
         <h1 className="font-bold text-xl ml-2">{title}</h1>
 
       <div className="ml-auto flex items-center gap-2">
-        <div className="flex flex-col justify-center items-center">
-          <User className="border w-8 h-8 rounded-2xl cursor-pointer"/>
+        <div className="ml-auto flex items-center gap-2 text-sm">
+          <User className="h-4 w-4 text-muted-foreground"/>
+          <span>{user ? `${user.firstName} ${user.lastName}` : `User`}</span>
         </div>
       </div>
       </div>
