@@ -12,6 +12,8 @@ function DashTopbar() {
 
         <SidebarTrigger className="-ml-1" />
 
+        <span>|</span>
+
       {/* TOPBAR CONTENT */}
       {/* Here put the current page i am in, make it dynamic */}
 

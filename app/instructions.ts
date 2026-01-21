@@ -4,12 +4,9 @@
 /* 
 Now go to GitHub and:
 
-Close the existing PRs
+Close the existing PRs *
 
-Add a comment like:
-“Merged locally into main and pushed. Keeping this PR closed for history.”
-*/
-// This keeps your repo sane and shows a clear story: you integrated everything into main.
+
 
 // work in the header, the header should contain the current page i am in right after the collapsable button
 // take out the search thing
