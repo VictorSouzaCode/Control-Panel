@@ -1,52 +1,65 @@
+import Link from "next/link"
+import { getOrders } from "@/lib/api/orders"
+import { 
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import StatusBadge from "@/components/dashboard/overview/StatusBadge"
+import { getOrderStatus } from "@/lib/constants/orderStatus"
 
-const OrdersPage = () => {
+
+const OrdersPage = async () => {
+  const orders = await getOrders()
+
   return (
-    <div>
-        <h1>OrdersPage</h1>
+    <div className="p-4 space-y-4">
+      <h1 className="text-xl font-semibold">Orders</h1>
+
+      <div className="rounded-md border">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>ID</TableHead>
+              <TableHead>Customer</TableHead>
+              <TableHead>Items</TableHead>
+              <TableHead>Total</TableHead>
+              <TableHead>Status</TableHead>
+            </TableRow>
+          </TableHeader>
+
+          <TableBody>
+            {orders.map((order) => (
+              <TableRow key={order.id}>
+                <TableCell>#{order.id}</TableCell>
+                <TableCell>{order.userId}</TableCell>
+                <TableCell>{order.totalProducts}</TableCell>
+                <TableCell>${order.discountedTotal.toFixed(2)}</TableCell>
+                <TableCell>
+                  <StatusBadge status={getOrderStatus(order)} />
+                </TableCell>
+                <TableCell>
+                  <Link
+                    href={`/orders/${order.id}`}
+                    className="text-sm underline"
+                  >
+                    View
+                  </Link>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   )
 }
 
 export default OrdersPage
 
-/*
-The simple rule
-
-orders/page.tsx = the LIST
-orders/[id]/page.tsx = the DETAILS
-
-That’s it. That pattern repeats everywhere.
-*/
-
-/*
-orders/page.tsx → Orders List page
-
-This page answers:
-
-“What orders exist, and which one do I want to look at?”
-
-What belongs here
-
-Orders table
-
-Filters (status, date)
-
-Pagination
-
-Click → go to order details
-
-What does NOT belong here
-
-Deep order info
-
-Item breakdown
-
-Customer profile
-
-Editing everything
-
-Think of it like Gmail inbox.
-*/
 
 /*
 orders/[id]/page.tsx → Order Detail page

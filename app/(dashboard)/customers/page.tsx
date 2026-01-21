@@ -13,6 +13,10 @@ import { CustomerSearch } from "@/components/dashboard/CustomerSearch"
 import { getCustomerStatus } from "@/lib/constants/customersStatus"
 import StatusBadge from "@/components/dashboard/overview/StatusBadge"
 
+// Get this page to display properly, right now it is overflowing to the side
+
+// Refactor it to create a table component and import it in here
+
 type CustomerPageProps = {
   searchParams: Promise<{ page?: string, query?: string}>
 }

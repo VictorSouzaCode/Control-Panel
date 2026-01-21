@@ -1,0 +1,33 @@
+import { NextResponse } from "next/server"
+import type { NextRequest } from "next/server"
+
+// bug fix, next is not booting up the login page first
+
+export function proxy(request: NextRequest) {
+  const token = request.cookies.get("auth_token")?.value
+  const pathname = request.nextUrl.pathname
+
+  const isDashboard = pathname.startsWith("/dashboard")
+  const isLogin = pathname.startsWith("/login")
+  const isRoot = pathname === "/"
+
+  if (isRoot) {
+    return NextResponse.redirect(
+      new URL(token ? "/dashboard" : "/login", request.url)
+    )
+  }
+
+  if (isDashboard && !token) {
+    return NextResponse.redirect(new URL("/login", request.url))
+  }
+
+  if (isLogin && token) {
+    return NextResponse.redirect(new URL("/dashboard", request.url))
+  }
+
+  return NextResponse.next()
+}
+
+export const config = {
+  matcher: ["/", "/dashboard/:path*", "/login"],
+}
