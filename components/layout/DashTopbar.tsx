@@ -1,6 +1,7 @@
 'use client'
 import { SidebarTrigger } from "../ui/sidebar"
 import { usePathname } from "next/navigation"
+import { User } from "lucide-react"
 
 function getTitle(pathname: string)  {
 
@@ -31,9 +32,9 @@ const DashTopbar = () => {
         <h1 className="font-bold text-xl ml-2">{title}</h1>
 
       <div className="ml-auto flex items-center gap-2">
-        <span className="font-bold">User</span>
-        <span>|</span>
-        <span className="font-bold">Theme</span>
+        <div className="flex flex-col justify-center items-center">
+          <User className="border w-8 h-8 rounded-2xl cursor-pointer"/>
+        </div>
       </div>
       </div>
 

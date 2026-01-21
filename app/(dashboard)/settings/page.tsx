@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { useState } from "react"
+import { SunDim } from "lucide-react"
 
 const SettingsPage = () => {
   const [name, setName] = useState("Victor")
@@ -101,6 +102,11 @@ const SettingsPage = () => {
                 <SelectItem value="es">Español</SelectItem>
               </SelectContent>
             </Select>
+          </div>
+
+          <div>
+            <p className="font-medium">Light/Dark</p>
+            <SunDim className="w-7 h-7 cursor-pointer"/>
           </div>
         </CardContent>
       </Card>
