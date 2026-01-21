@@ -12,18 +12,8 @@ function DashTopbar() {
 
         <SidebarTrigger className="-ml-1" />
 
-        <span className="pr-2 pl-1 font-extralight">|</span>
-
       {/* TOPBAR CONTENT */}
-
-      <form className="border rounded-lg flex items-center px-2">
-        <input 
-        type="text" 
-        placeholder="search"
-        className="h-8 rounded-lg font-medium outline-none indent-1"
-         />
-         <Search className="cursor-pointer"/>
-      </form>
+      {/* Here put the current page i am in, make it dynamic */}
 
       <div className="ml-auto flex items-center gap-2">
         <span className="font-bold">User</span>
