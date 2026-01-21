@@ -17,7 +17,6 @@ const OrdersPage = async () => {
 
   return (
     <div className="p-4 space-y-4">
-      <h1 className="text-xl font-semibold">Orders</h1>
 
       <div className="rounded-md border">
         <Table>

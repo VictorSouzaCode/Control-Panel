@@ -23,7 +23,6 @@ const SettingsPage = () => {
 
   return (
     <div className="p-4 space-y-6 max-w-3xl">
-      <h1 className="text-xl font-semibold">Settings</h1>
 
       {/* Profile */}
       <Card>
