@@ -1,10 +1,10 @@
 'use client'
-import { Search } from "lucide-react"
-import Link from "next/link"
 import { SidebarTrigger } from "../ui/sidebar"
+import { usePathname } from "next/navigation"
 
 
-function DashTopbar() {
+function DashTopbar(pathname: string) {
+  console.log(pathname)
   return (
     <header className="flex h-16 border-b items-center">
 
@@ -13,9 +13,6 @@ function DashTopbar() {
         <SidebarTrigger className="-ml-1" />
 
         <span>|</span>
-
-      {/* TOPBAR CONTENT */}
-      {/* Here put the current page i am in, make it dynamic */}
 
       <div className="ml-auto flex items-center gap-2">
         <span className="font-bold">User</span>
