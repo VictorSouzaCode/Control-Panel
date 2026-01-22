@@ -36,7 +36,7 @@ const CustomersPage = async ({ searchParams }: CustomerPageProps) => {
 
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="p-4 space-y-4 flex flex-col max-w-screen">
       <div className="flex items-center justify-between">
         <CustomerSearch/>
       </div>
@@ -48,9 +48,9 @@ const CustomersPage = async ({ searchParams }: CustomerPageProps) => {
               <TableRow>
                 <TableHead>ID</TableHead>
                 <TableHead>Name</TableHead>
-                <TableHead>Email</TableHead>
                 <TableHead>Age</TableHead>
                 <TableHead>Country</TableHead>
+                <TableHead>Status</TableHead>
               </TableRow>
             </TableHeader>
 
@@ -66,7 +66,6 @@ const CustomersPage = async ({ searchParams }: CustomerPageProps) => {
                     {u.firstName} {u.lastName}
                     </Link>
                   </TableCell>
-                  <TableCell>{u.email}</TableCell>
                   <TableCell>{u.age}</TableCell>
                   <TableCell>{u.address.country}</TableCell>
                   <TableCell>
@@ -78,42 +77,31 @@ const CustomersPage = async ({ searchParams }: CustomerPageProps) => {
           </Table>
         </div>
 
-        <div className="text-center">
-          <span>
-            Page {currentPage} of {totalPages}
-          </span>
-          {/* Later: improve buttons initial and final positions */}
-          <div className="flex justify-between">
-            <Link 
-              href={`/customers?page=${currentPage - 1}`}
-              >
-                <Button size="sm" className="cursor-pointer">Previous</Button>
-              </Link>
-              <Link 
-              href={`/customers?page=${currentPage + 1}`}>
-                <Button size="sm" className="cursor-pointer">Next</Button>
-              </Link>
-          </div>
+        <div className="flex items-center justify-between">
+    <span className="text-sm text-muted-foreground">
+      Page {currentPage} of {totalPages}
+    </span>
+
+    <div className="flex gap-2">
+      {currentPage > 1 && (
+        <Link href={`/customers?page=${currentPage - 1}`}>
+          <Button size="sm" variant="outline" className="cursor-pointer">
+            Previous
+          </Button>
+        </Link>
+      )}
+
+      {currentPage < totalPages && (
+        <Link href={`/customers?page=${currentPage + 1}`}>
+          <Button size="sm" className="cursor-pointer">
+            Next
+          </Button>
+        </Link>
+      )}
+    </div>
         </div>
     </div>
   )
 }
 
 export default CustomersPage
-
-// old code for buttons position
-/* 
-              {currentPage > 1 && (
-              <Link 
-              href={`/customers?page=${currentPage - 1}`}
-              >
-                <Button size="sm" className="cursor-pointer">Previous</Button>
-              </Link>
-            )}
-            {currentPage < totalPages && (
-              <Link 
-              href={`/customers?page=${currentPage + 1}`}>
-                <Button size="sm" className="cursor-pointer">Next</Button>
-              </Link>
-            )}
-*/

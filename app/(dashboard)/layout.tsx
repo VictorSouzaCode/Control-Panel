@@ -16,7 +16,7 @@ const DashboardLayout = ({children}:DashboardLayout) => {
       <SidebarInset className="flex flex-1 flex-col">
           <DashTopbar />
           
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 min-w-0">{children}</main>
 
         </SidebarInset>
     </div>
