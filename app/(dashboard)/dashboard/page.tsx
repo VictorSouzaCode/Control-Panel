@@ -3,6 +3,7 @@ import OrdersChart from "@/components/dashboard/overview/OrdersChart"
 import RecentOrders from "@/components/dashboard/overview/RecentOrders"
 import { getOrders } from "@/lib/api/orders"
 import { getCustomers } from "@/lib/api/customers"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 
 const OverviewPage = async () => {
   const orders = await getOrders();
@@ -13,17 +14,36 @@ const OverviewPage = async () => {
   const completedOrders = 2;
 
   return (
-    <div className="flex flex-col flex-1 min-h-full border">
-      <div className="flex flex-1 gap-4 p-4 max-h-50 border justify-center">
+    <div className="flex flex-col gap-6 p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <KpiCards title="Total Customers" value={customers.length}/>
         <KpiCards title="Active Customers" value={activeCustomers}/>
         <KpiCards title="Total Orders" value={totalOrders}/>
         <KpiCards title="Completed Orders" value={completedOrders}/>
       </div>
 
-      <OrdersChart orders={orders}/>
-      <h2 className="text-lg font-semibold">Recent Activity</h2>
-      <RecentOrders orders={orders}/>
+      {/* Chart */}
+      <Card>
+        <CardHeader>
+          <CardTitle>
+            Orders over time
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <OrdersChart orders={orders}/>
+        </CardContent>
+      </Card>
+
+      {/* Table */}
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Recent Activity</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <RecentOrders orders={orders}/>
+        </CardContent>
+      </Card>
     </div>
   )
 }

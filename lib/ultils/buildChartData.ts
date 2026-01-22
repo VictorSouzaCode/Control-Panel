@@ -1,26 +1,30 @@
 import type { Order } from "../types/Orders";
 
 export function buildChartData(orders: Order[]) {
-  const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  const months = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+  ]
 
-  const buckets = days.map((day) => ({
-    day,
+  const buckets = months.map((month) => ({
+    month,
     value: 0,
-  }));
+  }))
 
-  // Base distribution from real data
-  orders.forEach((order) => {
-    const index = order.id % days.length;
-    buckets[index].value += order.totalQuantity;
-  });
+  // Distribute order quantities across months
+  orders.forEach((order, i) => {
+    const index = i % months.length
+    buckets[index].value += order.totalQuantity
+  })
 
-  // Make it cumulative with wobble
-  for (let i = 1; i < buckets.length; i++) {
-    const baseGrowth = buckets[i].value;
-    const wobble = Math.floor((baseGrowth * 0.2) * ((i % 2 === 0) ? -1 : 1));
+  // Add gentle variation so it goes up and down
+  return buckets.map((b, i) => {
+    const swing = Math.floor(b.value * 0.3)
+    const modifier = i % 2 === 0 ? -swing : swing
 
-    buckets[i].value = buckets[i - 1].value + baseGrowth + wobble;
-  }
-
-  return buckets;
+    return {
+      month: b.month,
+      orders: Math.max(20, b.value + modifier),
+    }
+  })
 }
