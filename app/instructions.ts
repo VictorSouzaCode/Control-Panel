@@ -1,23 +1,4 @@
-// How to organize git commits and pull requests
-// Ignore GitHub PRs, merge locally, then close them.
-// Merge your branches one by one locally:
-/* 
-Now go to GitHub and:
 
-Close the existing PRs *
-
-Add a comment like:
-“Merged locally into main and pushed. Keeping this PR closed for history.”
-*/
-
-// This keeps your repo sane and shows a clear story: you integrated everything into main.
-
-// work in the header, the header should contain the current page i am currently in right after the collapsable button.
-
-// header:
-// name of the current page the user is in, should appear there, right after the toggle button
-// display the user logged in, with a icon and name
-// put for now, only the icon for theme toggle.
 
 // overview:
 // work in the kpi cards, how they are being displayed, make it more clean.

@@ -14,7 +14,7 @@ const OverviewPage = async () => {
 
   return (
     <div className="flex flex-col flex-1 min-h-full border">
-      <div className="flex flex-1 justify-around">
+      <div className="flex flex-1 gap-4 p-4 max-h-50 border justify-center">
         <KpiCards title="Total Customers" value={customers.length}/>
         <KpiCards title="Active Customers" value={activeCustomers}/>
         <KpiCards title="Total Orders" value={totalOrders}/>
