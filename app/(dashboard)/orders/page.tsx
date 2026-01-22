@@ -27,6 +27,7 @@ const OrdersPage = async () => {
               <TableHead>Items</TableHead>
               <TableHead>Total</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead>Details</TableHead>
             </TableRow>
           </TableHeader>
 
@@ -43,7 +44,7 @@ const OrdersPage = async () => {
                 <TableCell>
                   <Link
                     href={`/orders/${order.id}`}
-                    className="text-sm underline"
+                    className="text-sm hover:underline"
                   >
                     View
                   </Link>
