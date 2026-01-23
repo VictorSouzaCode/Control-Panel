@@ -13,7 +13,9 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { useState } from "react"
-import { SunDim } from "lucide-react"
+import { Sun } from "lucide-react"
+import { Moon } from "lucide-react"
+import { useAuthStore } from "@/store/useAuthStore"
 
 const SettingsPage = () => {
   const [name, setName] = useState("Victor")
@@ -21,6 +23,8 @@ const SettingsPage = () => {
 
   const [orderEmails, setOrderEmails] = useState(true)
   const [weeklySummary, setWeeklySummary] = useState(false)
+
+  const user = useAuthStore((s) => s.user)
 
   return (
     <div className="p-4 space-y-6 max-w-3xl">
@@ -35,7 +39,7 @@ const SettingsPage = () => {
             <Label htmlFor="name">Full name</Label>
             <Input
               id="name"
-              value={name}
+              defaultValue={`${user?.firstName} ${user?.lastName}`}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
@@ -44,7 +48,7 @@ const SettingsPage = () => {
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
-              value={email}
+              defaultValue={user?.email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -105,8 +109,11 @@ const SettingsPage = () => {
           </div>
 
           <div>
-            <p className="font-medium">Light/Dark</p>
-            <SunDim className="w-7 h-7 cursor-pointer"/>
+            <p className="font-medium">Theme</p>
+            <div className="flex gap-2">
+            <Sun className="w-6 h-6 cursor-pointer"/>
+            <Moon className="w-5 h-5 cursor-pointer"/>
+            </div>
           </div>
         </CardContent>
       </Card>

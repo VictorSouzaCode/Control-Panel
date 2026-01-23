@@ -11,20 +11,11 @@
 // sidebar change the main name to control-panel, mayber change the icon
 
 // settings
-// i want to be able to change the user name, displayed in the header
-// i want to be able to change the role, of admin to user or whatever
-// able to change the email, when i change it, what is going to change is only the email displayed in the email input when i enter the settings page
-// i want to add this changes when i click in save changes
+// able to change the theme
+// name and email from the logged in user
 
 // Re-Usable Component:
 // there is too many tables in a lot of pages, i want to build a component where all the pages can use it, without needing to create a table in every page. that is going to be cool
-
-// orders:
-// add pagination, maybe
-// in ordersID, products are being displeyed a little strange fix that
-
-// chart:
-// make it more pretty, add more curves to it as well, it is too fucking boring
 
 // adjust the order of components in the components folder, i think it is too messy, and some things are stored in the wrong folders
 

@@ -17,16 +17,13 @@ const OrderInfo = async ({ params }: Props) => {
 
   return (
     <div className="p-4 space-y-4">
-      <h1 className="text-xl font-semibold">
-        Order #{order.id}
-      </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
           <CardHeader>
-            <CardTitle>Summary</CardTitle>
+            <CardTitle>Order #{order.id}</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-1 text-sm">
+          <CardContent className="space-y-2 text-sm">
             <p><strong>Customer:</strong> {order.userId}</p>
             <p><strong>Items:</strong> {order.totalProducts}</p>
             <p><strong>Quantity:</strong> {order.totalQuantity}</p>
@@ -41,15 +38,15 @@ const OrderInfo = async ({ params }: Props) => {
           <CardHeader>
             <CardTitle>Products</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-2 text-sm">
+          <CardContent className="space-y-4 text-sm">
             {order.products.map((p) => (
               <div
                 key={p.id}
                 className="flex justify-between border-b pb-1"
               >
-                <span>{p.title}</span>
-                <span>x{p.quantity}</span>
-                <span>${p.total}</span>
+                <span className="w-full">{p.title}</span>
+                <span className="w-full flex justify-center items-center">x{p.quantity}</span>
+                <span className="w-full flex justify-end items-center">${p.total}</span>
               </div>
             ))}
           </CardContent>

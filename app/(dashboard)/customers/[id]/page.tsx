@@ -27,7 +27,7 @@ const CustomerInfo = async ({ params }: Props) => {
           <CardHeader>
             <CardTitle>Profile</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-1 text-sm">
+          <CardContent className="space-y-2 text-sm">
             <p><strong>Name:</strong> {customer.firstName} {customer.lastName}</p>
             <p><strong>Email:</strong> {customer.email}</p>
             <p><strong>Age:</strong> {customer.age}</p>
@@ -39,7 +39,7 @@ const CustomerInfo = async ({ params }: Props) => {
           <CardHeader>
             <CardTitle>Address</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-1 text-sm">
+          <CardContent className="space-y-2 text-sm">
             <p>{customer.address.address}</p>
             <p>{customer.address.city}</p>
             <p>{customer.address.state}</p>
@@ -51,7 +51,7 @@ const CustomerInfo = async ({ params }: Props) => {
           <CardHeader>
             <CardTitle>Payment</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-1 text-sm">
+          <CardContent className="space-y-2 text-sm">
             <p><strong>Card:</strong> {customer.bank.cardType}</p>
             <p><strong>Number:</strong> {customer.bank.cardNumber}</p>
             <p><strong>Expires:</strong> {customer.bank.cardExpire}</p>
