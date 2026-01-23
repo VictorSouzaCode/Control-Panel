@@ -40,6 +40,7 @@ const SettingsPage = () => {
     <div className="p-4 space-y-6 max-w-3xl">
 
       {/* Profile */}
+      <div className="max-w-3xl mx-auto space-y-6">
       <Card>
         <CardHeader>
           <CardTitle>Profile</CardTitle>
@@ -142,6 +143,7 @@ const SettingsPage = () => {
           </div>
         </CardContent>
       </Card>
+      </div>
     </div>
   )
 }
