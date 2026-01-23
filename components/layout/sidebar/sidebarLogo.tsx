@@ -1,4 +1,4 @@
-import { Layers, MonitorCog } from "lucide-react"
+import { MonitorCog } from "lucide-react"
 
 const SidebarLogo = () => {
   return (

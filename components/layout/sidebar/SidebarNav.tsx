@@ -1,19 +1,16 @@
 'use client'
 import { 
-  SidebarGroup, 
-  SidebarGroupLabel, 
+  SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarTrigger
 } from "@/components/ui/sidebar"
 import Link from "next/link"
 import type { ItemsType } from "@/lib/types/itemsType"
 import { usePathname } from "next/navigation"
 import { useRouter } from "next/navigation"
 import { useAuthStore } from "@/store/useAuthStore"
-import { Button } from "@/components/ui/button"
 
 type SidebarNavProps = {
   label?: string,
