@@ -24,7 +24,6 @@ export const useAuthStore = create<AuthState>()(
         }),
 
       logout: () => {
-        document.cookie = "auth_token=; path=/; max-age=0";
         set({
           user: null,
           isAuthenticated: false,
