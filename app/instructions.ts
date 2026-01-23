@@ -1,9 +1,3 @@
-// shipping process
-/*
-
-*/
-// Add a good read me
-
 
 // After shipping the project
 
