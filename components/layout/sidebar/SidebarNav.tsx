@@ -52,7 +52,7 @@ const SidebarNav = ({
                   className="h-12"
                 >
                   {isLogout ? (
-                    <div className="flex items-center gap-4 px-3">
+                    <div className="flex items-center gap-4 px-3 cursor-pointer">
                       <item.icon/>
                       <span>{item.title}</span>
                     </div>
