@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Sun } from "lucide-react"
 import { Moon } from "lucide-react"
 import { useAuthStore } from "@/store/useAuthStore"
@@ -28,6 +28,13 @@ const SettingsPage = () => {
   const user = useAuthStore((s) => s.user)
 
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted ] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  },[])
+
+  if(!mounted) return null;
 
   return (
     <div className="p-4 space-y-6 max-w-3xl">
@@ -117,7 +124,7 @@ const SettingsPage = () => {
               <Button 
               onClick={() => setTheme("light")}
               className={`p-2 rounded-md border ${
-                theme === "light" ? "bg-muted" : ""
+                theme === "light" ? "border-primary bg-primary/10 text-primary" : "opacity-60 hover:opacity-100"
               }`}
               >
                 <Sun className="w-6 h-6 cursor-pointer"/>
@@ -126,7 +133,7 @@ const SettingsPage = () => {
               <Button 
               onClick={() => setTheme("dark")}
               className={`p-2 rounded-md border ${
-                theme === "dark" ? "bg-muted" : ""
+                theme === "dark" ? "border-primary bg-primary/10 text-primary" : "opacity-60 hover:opacity-100"
               }`}
               >
                 <Moon className="w-5 h-5 cursor-pointer"/>
