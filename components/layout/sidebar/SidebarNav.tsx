@@ -27,11 +27,10 @@ const SidebarNav = ({
 
   const pathname = usePathname();
   const router = useRouter();
-  const logoutStore = useAuthStore((s) => s.logout)
+  const logout = useAuthStore((s) => s.logout)
 
   function handleLogout() {
-    document.cookie = "auth_token=; path=/; max-age=0"
-    logoutStore();
+    logout();
     router.push("/login")
   }
 
@@ -50,15 +49,16 @@ const SidebarNav = ({
                   isActive={!isLogout && pathname === item.href}
                   onClick={isLogout ? handleLogout : undefined}
                   asChild
+                  className="h-12"
                 >
                   {isLogout ? (
-                    <div className="cursor-pointer">
-                      <item.icon />
+                    <div className="flex items-center gap-4 px-3">
+                      <item.icon/>
                       <span>{item.title}</span>
                     </div>
                   ) : (
-                    <Link href={item.href}>
-                      <item.icon />
+                    <Link href={item.href} className="flex items-center gap-3 px-3">
+                      <item.icon/>
                       <span>{item.title}</span>
                     </Link>
                   )}

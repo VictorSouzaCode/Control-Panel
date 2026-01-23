@@ -4,6 +4,8 @@ import RecentOrders from "@/components/dashboard/overview/RecentOrders"
 import { getOrders } from "@/lib/api/orders"
 import { getCustomers } from "@/lib/api/customers"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Suspense } from "react"
+import { KpiSkeleton } from "@/components/dashboard/overview/KpiSkeleton"
 
 const OverviewPage = async () => {
   const orders = await getOrders();
@@ -16,10 +18,21 @@ const OverviewPage = async () => {
   return (
     <div className="flex flex-col gap-6 p-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <KpiCards title="Total Customers" value={customers.length}/>
-        <KpiCards title="Active Customers" value={activeCustomers}/>
-        <KpiCards title="Total Orders" value={totalOrders}/>
-        <KpiCards title="Completed Orders" value={completedOrders}/>
+        <Suspense
+          fallback={
+            <>
+              <KpiSkeleton />
+              <KpiSkeleton />
+              <KpiSkeleton />
+              <KpiSkeleton />
+            </>
+          }
+        >
+          <KpiCards title="Total Customers" value={customers.length} />
+          <KpiCards title="Active Customers" value={activeCustomers} />
+          <KpiCards title="Total Orders" value={totalOrders} />
+          <KpiCards title="Completed Orders" value={completedOrders} />
+        </Suspense>
       </div>
 
       {/* Chart */}

@@ -119,25 +119,3 @@ const CustomersPage = async ({ searchParams }: CustomerPageProps) => {
 }
 
 export default CustomersPage
-
-
-/*
-filtered.map((u) => (
-                <TableRow key={u.id}>
-                  <TableCell>#{u.id}</TableCell>
-                  <TableCell>
-                    <Link
-                    href={`/customers/${u.id}`}
-                    className="hover:underline" 
-                    >
-                    {u.firstName} {u.lastName}
-                    </Link>
-                  </TableCell>
-                  <TableCell>{u.age}</TableCell>
-                  <TableCell>{u.address.country}</TableCell>
-                  <TableCell>
-                    <StatusBadge status={getCustomerStatus(u.age)} />
-                  </TableCell>
-                </TableRow>
-              ))
-              */

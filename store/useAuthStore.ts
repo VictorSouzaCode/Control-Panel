@@ -21,14 +21,17 @@ export const useAuthStore = create<AuthState>()(
           isAuthenticated: true,
         }),
 
-      logout: () =>
+      logout: () => {
+        document.cookie = "auth_token=; path=/; max-age=0";
         set({
           user: null,
           isAuthenticated: false,
-        }),
+        });
+      }
+        
     }),
     {
-      name: "auth-store", // key in localStorage
+      name: "auth-store",
     }
   )
 )

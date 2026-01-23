@@ -9,7 +9,7 @@ const AppSidebar = () => {
   return (
     <Sidebar collapsible="icon">
       
-      <SidebarHeader className="border-b h-16 flex justify-center">
+      <SidebarHeader className="border-b px-3.5 h-16 flex justify-center">
         <SidebarLogo/>
       </SidebarHeader>
 
