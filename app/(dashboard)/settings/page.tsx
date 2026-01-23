@@ -123,7 +123,7 @@ const SettingsPage = () => {
             <div className="flex gap-2">
               <Button 
               onClick={() => setTheme("light")}
-              className={`p-2 rounded-md border ${
+              className={`p-2 rounded-md border cursor-pointer ${
                 theme === "light" ? "border-primary bg-primary/10 text-primary" : "opacity-30 hover:opacity-100"
               }`}
               >
@@ -132,7 +132,7 @@ const SettingsPage = () => {
 
               <Button 
               onClick={() => setTheme("dark")}
-              className={`p-2 rounded-md border ${
+              className={`p-2 rounded-md border cursor-pointer ${
                 theme === "dark" ? "border-primary bg-primary/10 text-primary" : "opacity-30 hover:opacity-100"
               }`}
               >

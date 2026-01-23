@@ -10,10 +10,6 @@
 
 // sidebar change the main name to control-panel, mayber change the icon
 
-// Theme fixes
-// status badge is too bright in the dark mode
-// buttons in settings they are strange now, fix it
-
 // Re-Usable Component:
 // there is too many tables in a lot of pages, i want to build a component where all the pages can use it, without needing to create a table in every page. that is going to be cool
 
