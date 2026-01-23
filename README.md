@@ -1,8 +1,12 @@
-# Control Panel Dashboard
+<h1 align="center">Control Panel Dashboard</h1>
 
-A modern admin dashboard built with Next.js, TypeScript, Tailwind, shadcn/ui and Zustand.
 
-## Overview
+<p align="center">
+  A modern admin dashboard built with Next.js, TypeScript, Tailwind, shadcn/ui and Zustand.
+</p>
+
+<h2 align="center">Overview</h2>
+
 <p align="center">
   <img src="./screenshots/dashboard-light.png" width="90%" />
 </p>
