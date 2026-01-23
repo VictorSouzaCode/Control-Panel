@@ -5,12 +5,15 @@ A modern admin dashboard built with Next.js, TypeScript, Tailwind, shadcn/ui and
 ## Overview
 <p align="center">
   <img src="./screenshots/dashboard-light.png" width="48%" />
-  <img src="./screenshots/dashboard-dark.png" width="48%" />
 </p>
 
 <p align="center">
-  <em>Light mode (left) · Dark mode (right)</em>
+<img src="./screenshots/dashboard-dark.png" width="48%" />
 </p>
+
+<!-- <p align="center">
+  <em>Light mode (left) · Dark mode (right)</em>
+</p> -->
 
 Features:
 - Authentication flow
