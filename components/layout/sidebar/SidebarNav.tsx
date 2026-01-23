@@ -27,6 +27,7 @@ const SidebarNav = ({
   const logout = useAuthStore((s) => s.logout)
 
   function handleLogout() {
+    document.cookie = "auth_token=; path=/; max-age=0";
     logout();
     router.push("/login")
   }
