@@ -7,6 +7,10 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Suspense } from "react"
 import { KpiSkeleton } from "@/components/dashboard/overview/KpiSkeleton"
 
+export const metadata = {
+  title: "Overview | Control Panel",
+};
+
 const OverviewPage = async () => {
   const orders = await getOrders();
   const { users: customers } = await getCustomers();

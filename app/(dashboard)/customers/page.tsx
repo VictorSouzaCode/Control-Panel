@@ -15,6 +15,10 @@ import StatusBadge from "@/components/dashboard/overview/StatusBadge"
 import { Suspense } from "react"
 import { TableSkeleton } from "@/components/shared/TableSkeleton"
 
+export const metadata = {
+  title: "Customers | Control Panel",
+};
+
 
 type CustomerPageProps = {
   searchParams: Promise<{ page?: string, query?: string}>

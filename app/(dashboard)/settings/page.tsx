@@ -18,6 +18,10 @@ import { Moon } from "lucide-react"
 import { useAuthStore } from "@/store/useAuthStore"
 import { useTheme } from "next-themes"
 
+export const metadata = {
+  title: "Settings | Control Panel",
+};
+
 const SettingsPage = () => {
   const [name, setName] = useState("Victor")
   const [email, setEmail] = useState("victor@email.com")

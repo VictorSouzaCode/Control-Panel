@@ -3,6 +3,10 @@ import AppSidebar from "@/components/layout/sidebar/AppSidebar"
 import React from "react"
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 
+export const metadata = {
+  title: "Dashboard | Control Panel",
+};
+
 type DashboardLayout = {
   children: React.ReactNode
 }

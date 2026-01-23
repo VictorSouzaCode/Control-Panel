@@ -11,6 +11,9 @@ import {
 import StatusBadge from "@/components/dashboard/overview/StatusBadge"
 import { getOrderStatus } from "@/lib/constants/orderStatus"
 
+export const metadata = {
+  title: "Orders | Control Panel",
+};
 
 const OrdersPage = async () => {
   const orders = await getOrders()
