@@ -1,12 +1,4 @@
-
-export type LoginResponse = {
-  id: number;
-  username: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  token: string;
-};
+import type { LoginResponse } from "../types/auth";
 
 export async function login(username: string, password: string) {
   const res = await fetch("https://dummyjson.com/auth/login", {

@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { persist} from "zustand/middleware"
-import { LoginResponse } from "@/lib/api/auth";
+import type { LoginResponse } from "@/lib/types/auth";
 
 type AuthState = {
   user: LoginResponse | null;
