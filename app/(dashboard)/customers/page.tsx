@@ -54,28 +54,36 @@ const CustomersPage = async ({ searchParams }: CustomerPageProps) => {
               </TableRow>
             </TableHeader>
 
-            <TableBody>
-              {filtered.map((u) => (
-                <TableRow key={u.id}>
-                  <TableCell>#{u.id}</TableCell>
-                  <TableCell>
-                    <Link
-                    href={`/customers/${u.id}`}
-                    className="hover:underline" 
-                    >
-                    {u.firstName} {u.lastName}
-                    </Link>
-                  </TableCell>
-                  <TableCell>{u.age}</TableCell>
-                  <TableCell>{u.address.country}</TableCell>
-                  <TableCell>
-                    <StatusBadge status={getCustomerStatus(u.age)} />
+          <TableBody>
+            {
+              filtered.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={6} className="h-24 text-center text-muted-foreground">
+                    No customers found.
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
+              ) : (
+                filtered.map((u) => (
+                  <TableRow key={u.id}>
+                    <TableCell>#{u.id}</TableCell>
+                    <TableCell>
+                      <Link href={`/customers/${u.id}`} className="hover:underline">
+                        {u.firstName} {u.lastName}
+                      </Link>
+                    </TableCell>
+                    <TableCell>{u.email}</TableCell>
+                    <TableCell>{u.age}</TableCell>
+                    <TableCell>{u.address.country}</TableCell>
+                    <TableCell>
+                      <StatusBadge status={getCustomerStatus(u.age)} />
+                    </TableCell>
+                  </TableRow>
+                ))
+              )
+            }
+          </TableBody>
+        </Table>
+      </div>
 
         <div className="flex items-center justify-between">
     <span className="text-sm text-muted-foreground">
