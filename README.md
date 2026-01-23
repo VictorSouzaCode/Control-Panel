@@ -4,8 +4,8 @@ A modern admin dashboard built with Next.js, TypeScript, Tailwind, shadcn/ui and
 
 ## Overview
 <p align="center">
-  <img src="./screenshots/overview-light.png" width="48%" />
-  <img src="./screenshots/overview-dark.png" width="48%" />
+  <img src="./screenshots/dashboard-light.png" width="48%" />
+  <img src="./screenshots/dashboard-dark.png" width="48%" />
 </p>
 
 <p align="center">
