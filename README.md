@@ -15,9 +15,7 @@
 <img src="./screenshots/dashboard-dark.png" width="90%" />
 </p>
 
-<!-- <p align="center">
-  <em>Light mode (left) · Dark mode (right)</em>
-</p> -->
+---
 
 Features:
 - Authentication flow
