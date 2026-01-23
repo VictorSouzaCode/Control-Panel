@@ -16,6 +16,7 @@ import { useState } from "react"
 import { Sun } from "lucide-react"
 import { Moon } from "lucide-react"
 import { useAuthStore } from "@/store/useAuthStore"
+import { useTheme } from "next-themes"
 
 const SettingsPage = () => {
   const [name, setName] = useState("Victor")
@@ -25,6 +26,8 @@ const SettingsPage = () => {
   const [weeklySummary, setWeeklySummary] = useState(false)
 
   const user = useAuthStore((s) => s.user)
+
+  const { theme, setTheme } = useTheme()
 
   return (
     <div className="p-4 space-y-6 max-w-3xl">
@@ -111,8 +114,23 @@ const SettingsPage = () => {
           <div>
             <p className="font-medium">Theme</p>
             <div className="flex gap-2">
-            <Sun className="w-6 h-6 cursor-pointer"/>
-            <Moon className="w-5 h-5 cursor-pointer"/>
+              <Button 
+              onClick={() => setTheme("light")}
+              className={`p-2 rounded-md border ${
+                theme === "light" ? "bg-muted" : ""
+              }`}
+              >
+                <Sun className="w-6 h-6 cursor-pointer"/>
+              </Button>
+
+              <Button 
+              onClick={() => setTheme("dark")}
+              className={`p-2 rounded-md border ${
+                theme === "dark" ? "bg-muted" : ""
+              }`}
+              >
+                <Moon className="w-5 h-5 cursor-pointer"/>
+              </Button>
             </div>
           </div>
         </CardContent>

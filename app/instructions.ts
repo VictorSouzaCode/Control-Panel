@@ -10,9 +10,9 @@
 
 // sidebar change the main name to control-panel, mayber change the icon
 
-// settings
-// able to change the theme
-// name and email from the logged in user
+// Theme fixes
+// status badge is too bright in the dark mode
+// buttons in settings they are strange now, fix it
 
 // Re-Usable Component:
 // there is too many tables in a lot of pages, i want to build a component where all the pages can use it, without needing to create a table in every page. that is going to be cool
@@ -26,6 +26,8 @@ installHook.js:1 The width(-1) and height(-1) of chart should be greater than 0,
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
 */ // it is located in the overview
+
+
 
 
 // Polish
