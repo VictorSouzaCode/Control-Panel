@@ -12,6 +12,8 @@ import { Button } from "@/components/ui/button"
 import { CustomerSearch } from "@/components/dashboard/CustomerSearch"
 import { getCustomerStatus } from "@/lib/constants/customersStatus"
 import StatusBadge from "@/components/dashboard/overview/StatusBadge"
+import { Suspense } from "react"
+import { TableSkeleton } from "@/components/shared/TableSkeleton"
 
 
 type CustomerPageProps = {
@@ -43,6 +45,7 @@ const CustomersPage = async ({ searchParams }: CustomerPageProps) => {
         
 
         <div className="rounded-md border">
+          <Suspense fallback={<TableSkeleton rows={5} cols={6}/>}>
           <Table>
             <TableHeader>
               <TableRow>
@@ -64,25 +67,28 @@ const CustomersPage = async ({ searchParams }: CustomerPageProps) => {
                 </TableRow>
               ) : (
                 filtered.map((u) => (
-                  <TableRow key={u.id}>
-                    <TableCell>#{u.id}</TableCell>
-                    <TableCell>
-                      <Link href={`/customers/${u.id}`} className="hover:underline">
-                        {u.firstName} {u.lastName}
-                      </Link>
-                    </TableCell>
-                    <TableCell>{u.email}</TableCell>
-                    <TableCell>{u.age}</TableCell>
-                    <TableCell>{u.address.country}</TableCell>
-                    <TableCell>
-                      <StatusBadge status={getCustomerStatus(u.age)} />
-                    </TableCell>
-                  </TableRow>
-                ))
+                <TableRow key={u.id}>
+                  <TableCell>#{u.id}</TableCell>
+                  <TableCell>
+                    <Link
+                    href={`/customers/${u.id}`}
+                    className="hover:underline" 
+                    >
+                    {u.firstName} {u.lastName}
+                    </Link>
+                  </TableCell>
+                  <TableCell>{u.age}</TableCell>
+                  <TableCell>{u.address.country}</TableCell>
+                  <TableCell>
+                    <StatusBadge status={getCustomerStatus(u.age)} />
+                  </TableCell>
+                </TableRow>
+              ))
               )
             }
           </TableBody>
         </Table>
+        </Suspense>
       </div>
 
         <div className="flex items-center justify-between">
@@ -113,3 +119,25 @@ const CustomersPage = async ({ searchParams }: CustomerPageProps) => {
 }
 
 export default CustomersPage
+
+
+/*
+filtered.map((u) => (
+                <TableRow key={u.id}>
+                  <TableCell>#{u.id}</TableCell>
+                  <TableCell>
+                    <Link
+                    href={`/customers/${u.id}`}
+                    className="hover:underline" 
+                    >
+                    {u.firstName} {u.lastName}
+                    </Link>
+                  </TableCell>
+                  <TableCell>{u.age}</TableCell>
+                  <TableCell>{u.address.country}</TableCell>
+                  <TableCell>
+                    <StatusBadge status={getCustomerStatus(u.age)} />
+                  </TableCell>
+                </TableRow>
+              ))
+              */
