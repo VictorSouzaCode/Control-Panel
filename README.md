@@ -1,5 +1,5 @@
 <h1 align="center">Control Panel Dashboard</h1>
-**Live Demo:** https://control-panel-tzqy.vercel.app
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge)](https://control-panel-tzqy.vercel.app
 
 <p align="center">
   A modern admin dashboard built with Next.js, TypeScript, Tailwind, shadcn/ui and Zustand.
