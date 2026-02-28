@@ -11,29 +11,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useEffect, useState } from "react"
-import { Sun } from "lucide-react"
-import { Moon } from "lucide-react"
+import { useState } from "react"
 import { useAuthStore } from "@/store/useAuthStore"
-import { useTheme } from "next-themes"
+import dynamic from "next/dynamic";
+
+const ThemeSelector = dynamic(
+  () => import("@/components/ThemeSelector"),
+  {ssr: false}
+)
+
 
 const SettingsClient = () => {
-    const [name, setName] = useState("Victor")
-  const [email, setEmail] = useState("victor@email.com")
-
   const [orderEmails, setOrderEmails] = useState(true)
   const [weeklySummary, setWeeklySummary] = useState(false)
 
   const user = useAuthStore((s) => s.user)
-
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted ] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  },[])
-
-  if(!mounted) return null;
 
   return (
     <div className="p-4 space-y-6 max-w-3xl">
@@ -50,7 +42,6 @@ const SettingsClient = () => {
             <Input
               id="name"
               defaultValue={`${user?.firstName} ${user?.lastName}`}
-              onChange={(e) => setName(e.target.value)}
             />
           </div>
 
@@ -59,7 +50,6 @@ const SettingsClient = () => {
             <Input
               id="email"
               defaultValue={user?.email}
-              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -120,25 +110,7 @@ const SettingsClient = () => {
 
           <div>
             <p className="font-medium">Theme</p>
-            <div className="flex gap-2">
-              <Button 
-              onClick={() => setTheme("light")}
-              className={`p-2 rounded-md border cursor-pointer ${
-                theme === "light" ? "border-primary bg-primary/10 text-primary" : "opacity-30 hover:opacity-100"
-              }`}
-              >
-                <Sun className="w-6 h-6 cursor-pointer"/>
-              </Button>
-
-              <Button 
-              onClick={() => setTheme("dark")}
-              className={`p-2 rounded-md border cursor-pointer ${
-                theme === "dark" ? "border-primary bg-primary/10 text-primary" : "opacity-30 hover:opacity-100"
-              }`}
-              >
-                <Moon className="w-5 h-5 cursor-pointer"/>
-              </Button>
-            </div>
+            <ThemeSelector/>
           </div>
         </CardContent>
       </Card>
