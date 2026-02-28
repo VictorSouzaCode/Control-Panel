@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { login } from "@/lib/api/auth"
+import { loginAction } from "@/lib/actions/auth"
 import { useAuthStore } from "@/store/useAuthStore"
 
 
@@ -22,15 +22,10 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const user = await login(username, password);
-
-      // Zustand
-      setAuth(user);
-
-      // Cookie for middleware
-      document.cookie = `auth_token=${user.token}; path=/`;
-
+      
+      await loginAction(username, password);
       router.push("/dashboard");
+
     } catch {
       setError("Invalid username or password");
     } finally {

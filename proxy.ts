@@ -2,8 +2,8 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
 export function proxy(request: NextRequest) {
-  const token = request.cookies.get("auth_token")?.value
-  const pathname = request.nextUrl.pathname
+  const token = request.cookies.get("auth_token");
+  const { pathname } = request.nextUrl;
 
   const isDashboard = pathname.startsWith("/dashboard")
   const isLogin = pathname.startsWith("/login")
