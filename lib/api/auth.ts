@@ -11,5 +11,7 @@ export async function login(username: string, password: string) {
     throw new Error("Invalid credentials");
   }
 
-  return res.json() as Promise<LoginResponse>;
+  const data = await res.json() as LoginResponse
+
+  return data;
 }
