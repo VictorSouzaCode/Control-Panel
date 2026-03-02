@@ -4,12 +4,10 @@ import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { loginAction } from "@/lib/actions/auth"
-import { useAuthStore } from "@/store/useAuthStore"
 
 
 export default function LoginPage() {
   const router = useRouter();
-  const setAuth = useAuthStore((s) => s.login);
 
   const [username, setUsername] = useState("emilys");
   const [password, setPassword] = useState("emilyspass");

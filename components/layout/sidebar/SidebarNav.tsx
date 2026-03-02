@@ -10,7 +10,7 @@ import Link from "next/link"
 import type { ItemsType } from "@/lib/types/itemsType"
 import { usePathname } from "next/navigation"
 import { useRouter } from "next/navigation"
-import { useAuthStore } from "@/store/useAuthStore"
+import { logoutAction } from "@/lib/actions/logout"
 
 type SidebarNavProps = {
   label?: string,
@@ -18,17 +18,14 @@ type SidebarNavProps = {
 }
 
 const SidebarNav = ({
-  label,
   items
 }: SidebarNavProps) => {
 
   const pathname = usePathname();
   const router = useRouter();
-  const logout = useAuthStore((s) => s.logout)
 
-  function handleLogout() {
-    document.cookie = "auth_token=; path=/; max-age=0";
-    logout();
+  async function handleLogout() {
+    await logoutAction()
     router.push("/login")
   }
 
