@@ -4,6 +4,7 @@ import { cookies } from 'next/headers'
 
 export async function getCurrentUSer() {
     const cookieStore = await cookies()
+    
     const token = cookieStore.get("auth_token")?.value
 
     if(!token) return null
@@ -14,6 +15,8 @@ export async function getCurrentUSer() {
         },
         cache: "no-store",
     })
+
+    console.log("STATUS:", res.status)
 
     if(!res.ok) return null
 

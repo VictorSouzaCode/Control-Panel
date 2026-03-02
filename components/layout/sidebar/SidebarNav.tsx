@@ -11,6 +11,7 @@ import type { ItemsType } from "@/lib/types/itemsType"
 import { usePathname } from "next/navigation"
 import { useRouter } from "next/navigation"
 import { logoutAction } from "@/lib/actions/logout"
+import { useAuthStore } from "@/store/useAuthStore"
 
 type SidebarNavProps = {
   label?: string,
@@ -23,9 +24,13 @@ const SidebarNav = ({
 
   const pathname = usePathname();
   const router = useRouter();
+  const clearUser = useAuthStore((s) => s.clearUser)
 
   async function handleLogout() {
     await logoutAction()
+
+    clearUser()
+    
     router.push("/login")
   }
 

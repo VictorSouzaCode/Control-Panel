@@ -3,7 +3,6 @@ import { SidebarTrigger } from "../ui/sidebar"
 import { usePathname } from "next/navigation"
 import { User } from "lucide-react"
 import { useAuthStore } from "@/store/useAuthStore"
-import { useState, useEffect } from "react"
 
 function getTitle(pathname: string)  {
 
@@ -23,13 +22,7 @@ const DashTopbar = () => {
   const title = getTitle(pathname)
   const user = useAuthStore((s) => s.user)
 
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
+  console.log("TOPBAR USER:", user)
 
   return (
     <header className="flex h-16 border-b items-center">
