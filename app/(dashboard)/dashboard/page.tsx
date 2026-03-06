@@ -8,10 +8,7 @@ import { Suspense } from "react"
 import { KpiSkeleton } from "@/components/dashboard/overview/KpiSkeleton"
 
 // improviments to be made
-// Server cookie caching working
-// Zustand removed
 // One reusable component extracted
-// Go back button when entering single order or client
 
 export const metadata = {
   title: "Overview | Control Panel",

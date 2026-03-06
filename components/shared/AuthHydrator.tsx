@@ -3,13 +3,6 @@ import { useEffect } from "react"
 import { useAuthStore } from "@/store/useAuthStore"
 import type { UserType } from "@/lib/types/user"
 
-// bridge between server state and client state.
-/*
-Server components cannot access Zustand
-Zustand only exists in the browser.
-So I created this bridge component:
-*/
-
 type HydratorProps = {
     user: UserType | null
 }
@@ -26,6 +19,15 @@ const AuthHydrator = ({ user }: HydratorProps) => {
 }
 
 export default AuthHydrator
+
+
+// bridge between server state and client state.
+
+/*
+Server components cannot access Zustand
+Zustand only exists in the browser.
+So I created this bridge component:
+*/
 
 /*
 This setup solves several problems at once.
