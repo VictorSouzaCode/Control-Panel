@@ -6,7 +6,7 @@ import type { UserType } from "@/lib/types/user"
 // bridge between server state and client state.
 
 type HydratorProps = {
-    user: UserType
+    user: UserType | null
 }
 
 const AuthHydrator = ({ user }: HydratorProps) => {

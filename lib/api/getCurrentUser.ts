@@ -5,20 +5,9 @@ import { cookies } from 'next/headers'
 export async function getCurrentUSer() {
     const cookieStore = await cookies()
     
-    const token = cookieStore.get("auth_token")?.value
+    const userCookie = cookieStore.get("auth_token")?.value
 
-    if(!token) return null
+    if(!userCookie) return null;
 
-    const res = await fetch("https://dummyjson.com/auth/me", {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-        cache: "no-store",
-    })
-
-    console.log("STATUS:", res.status)
-
-    if(!res.ok) return null
-
-    return res.json()
+    return JSON.parse(userCookie)
 }

@@ -9,7 +9,7 @@ export async function loginAction (username: string, password: string) {
 
         const cookieStore = await cookies()
 
-        cookieStore.set("auth_token", user.token, {
+        cookieStore.set("auth_token", JSON.stringify(user), {
           path: "/",
           httpOnly: true,
           secure: process.env.NODE_ENV === "production",
