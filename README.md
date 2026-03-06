@@ -28,7 +28,7 @@ Features:
 - Theme switching (light/dark)
 - Responsive layout
 - Status badges, tables, charts
-- Realistic UX patterns
+- UX patterns
 
 Tech stack:
 - Next.js (App Router)
