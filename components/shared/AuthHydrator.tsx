@@ -4,6 +4,11 @@ import { useAuthStore } from "@/store/useAuthStore"
 import type { UserType } from "@/lib/types/user"
 
 // bridge between server state and client state.
+/*
+Server components cannot access Zustand
+Zustand only exists in the browser.
+So I created this bridge component:
+*/
 
 type HydratorProps = {
     user: UserType | null
@@ -13,7 +18,6 @@ const AuthHydrator = ({ user }: HydratorProps) => {
     const setUser = useAuthStore((s) => s.setUser)
 
     useEffect(() => {
-        console.log("HYDRATING USER:", user)
         setUser(user)
 
     }, [user, setUser])
@@ -22,3 +26,14 @@ const AuthHydrator = ({ user }: HydratorProps) => {
 }
 
 export default AuthHydrator
+
+/*
+This setup solves several problems at once.
+Security: Token never exposed to JavaScript
+
+Reliability: Refresh page → server still knows the user
+
+Performance: User fetched once in layout
+Not on every component
+
+*/
